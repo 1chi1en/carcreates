@@ -28,7 +28,7 @@
             <%= "パスワード" %>
               <% f.label :password %>
               <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %>文字以上で設定してください)</em>
+              <em><div class="fontsmall">(英数字混合、<%= @minimum_password_length %>文字以上で設定してください)</div></em>
               <% end %><br />
               <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
             </div>

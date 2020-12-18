@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.error-alert {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.error-message {
+  font-size: 1.3vw;
+  list-style: circle;
+  color: rgb(182, 48, 0);
+}
+
 .headnav{
   display: flex;
   width: 100%;
@@ -49,6 +61,10 @@
 // 	left: 0;
 // 	content: ' ';
 // }
+
+.fontsmall{
+  font-size :12px;
+}
 
 .letter-w{
   color: white;
