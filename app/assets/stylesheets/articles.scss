@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.error-alert {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.error-message {
+  font-size: 1.3vw;
+  list-style: circle;
+  color: rgb(182, 48, 0);
+}
+
 .headnav{
   display: flex;
   width: 100%;
@@ -50,8 +62,16 @@
 // 	content: ' ';
 // }
 
+.fontsmall{
+  font-size :12px;
+}
+
 .letter-w{
   color: white;
+}
+
+.formleft{
+  text-align: left;
 }
 
 .toplink{
@@ -94,6 +114,14 @@
 .articletitle{
   margin-top: 2rem;
   border-bottom: solid 3px black;
+  text-align: center;
+}
+
+
+.commenttitle{
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: solid 3px black;
   text-align: center;
 }
 
