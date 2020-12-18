@@ -1,0 +1,58 @@
+<div class="portfolio-modal" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="modal-body">
+              <!-- 内容の編集 -->
+                <p><button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <%= link_to 'トップに戻る', root_path, class: "letter-w"%>
+                </button></p>
+              <h4><%= link_to @article.user.nickname, user_path(@user.ids), class: "article-top" %>
+                <%= "さんの投稿"%></h4>
+              <%= "#{@article.created_at.to_s(:datetime_jp)}"%>
+              <h2 class="articletitle"><%= @article.title%></h2>
+              <%= image_tag @article.image.variant(combine_options:{gravity: :center, resize:"200x200^"}).processed, alt: "記事のサムネイル画像", class: "item-img" if @article.image.attached? %>
+              <p><%= @article.content%></p>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <%= link_to 'トップに戻る', root_path, class: "letter-w"%>
+                </button>
+                <% if user_signed_in? && current_user.id == @article.user_id %>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <%= link_to '記事を編集する', edit_article_path, class: "letter-w"%>
+                </button>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <%= link_to '記事を削除する', article_path(@article.id), method: :delete, class: "letter-w"%>
+                </button>
+                <% end %>
+              <%= form_with(model:[@article, @comment], local: true) do |f| %>
+                <div class="comment">
+                  <h4>記事にコメントする</h4>
+                    <%= f.text_field :post, class:"comments-area", placeholder: "コメントを入力", id:"comments-area" %>
+                    <%= f.submit "送信" ,class:"btn btn-primary" %>
+                </div>
+              <% end %>
+                <div class="comment-list">
+                  <p>
+                    <% @comments.each do |c| %>
+                      <div class="comview">
+                        <div class="comfield">
+                          <%= c.post %>
+                        </div>
+                        <%= "by #{c.user.nickname}"%>
+                      </div>
+                    </div>
+                    <% end %>
+                  </p>
+                </div>
+                <button class="btn btn-primary" data-dismiss="modal" type="button">
+                  <%= link_to 'トップに戻る', root_path, class: "letter-w"%>
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
