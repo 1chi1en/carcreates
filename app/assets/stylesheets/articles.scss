@@ -70,6 +70,10 @@
   color: white;
 }
 
+.formleft{
+  text-align: left;
+}
+
 .toplink{
   text-decoration: none;
 }
@@ -110,6 +114,14 @@
 .articletitle{
   margin-top: 2rem;
   border-bottom: solid 3px black;
+  text-align: center;
+}
+
+
+.commenttitle{
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: solid 3px black;
   text-align: center;
 }
 

@@ -12,18 +12,18 @@
           <div class="formheader">
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="field">
-                <%= f.label :メールアドレス %><br />
+              <div class="form-group">
+                <%= f.label :email, "メールアドレス" %><br />
                 <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
               </div>
 
-              <div class="field">
-                <%= f.label :パスワード %><br />
+              <div class="form-group">
+                <%= f.label :password, "パスワード" %><br />
                 <%= f.password_field :password, class:"form-control", autocomplete: "current-password" %>
               </div>
 
               <% if devise_mapping.rememberable? %>
-                <div class="field">
+                <div class="form-group">
                   <%= f.check_box :remember_me %>
                   <%= f.label :情報を記録する %>
                 </div>

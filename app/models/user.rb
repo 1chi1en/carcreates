@@ -10,7 +10,8 @@ class User < ApplicationRecord
   with_options presence: true do
 
     validates :nickname
-    validates :password, format: { with: PASSWORD }
+    validates :email, on:[:create, :edit]
+    validates :password, format: { with: PASSWORD }, on: :create
   end
 
 end
