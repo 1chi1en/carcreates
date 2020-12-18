@@ -1,0 +1,16 @@
+
+
+<div class="container">
+  <div class="col-lg-12 margin-t">
+    <%=link_to 'もどる', root_path, class:"btn btn-primary" %>
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: "article-edit btn btn-primary"%>
+      <% end %>
+      <h3 class="articletitle"><%= "#{@user.nickname}さんのプロフィール" %></h2>
+    <div class="formheader">
+    <h5>自己紹介</h5>
+    <%= @user.profile %>
+
+</div>
+</div>
+</div>

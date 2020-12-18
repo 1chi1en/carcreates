@@ -1,0 +1,17 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top headnav" >
+  <div class="container">
+
+      <li>CAR-CREATE</li>
+      <li><%= link_to 'Top', root_path, class: "top-btn" %></li>
+      <% if user_signed_in? %>
+      <li><%= link_to '記事を投稿する', new_article_path, class: "search-btn" %></li>
+      <li><%= link_to current_user.nickname, user_path(current_user), class: "user-nickname" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+      <li><%= link_to 'ログイン', user_session_path, class: "login" %></a></li>
+      <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></a></li>
+      <% end %>
+
+  </div>
+</nav>
