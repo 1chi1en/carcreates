@@ -60,3 +60,13 @@ gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem 'pry-rails'
 # gem 'rails-i18n'
+
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+end
+
+group :production do
+  gem 'rails_12factor'
+end
