@@ -1,24 +1,99 @@
-# README
+# 各種仕様など
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- アプリケーション名  
+CAR-CREATES  
+- アプリケーション概要  
+旧車の整備、車の内装品、外装品の製作、  
+競技車両のマシンセッティングなど、  
+車の整備、製作において、技術やノウハウが必要な分野で  
+自分の知識や作業記録などを投稿し、共有できるアプリケーション  
+- URL  
+https://carcreates.herokuapp.com/
 
-Things you may want to cover:
+- 利用方法  
+1, アカウントを取得する。プロフィールを編集することもできる。
+2, 記事作成画面から記事を作成し、投稿する。
+3, 投稿されたものは誰でも自由に読む事ができる。自分が投稿した記事の編集、削除も可能
 
-* Ruby version
+- 目指した課題解決  
+1)モータースポーツにおいて非常に重要なものの一つが、自車の能力や走る場に合わせて  
+最適な状態に調整する「マシンセッティング」であるが、実はこれが非常にシビアで  
+属人的なノウハウを必要とする割りに、ネット上に参考にできる情報量が少ないので、  
+そのような情報を共有できる場がなく、不便である
+2)エアロパーツを「つける」ではなく、「つくる」情報をネットで探そうとすると  
+昔に作られた個人ホームページがわずかな情報を残してくれている程度しかなく、自分も自車の外装をつくる際に、必要な情報にたどり着くまでにとても時間がかかってしまったため、どこかにまとめてあったら便利なのに、と感じた  
+3)旧車は動態状態で所有するファンも多いものの、整備するのはやはり人なので  
+年月が経つにつれて整備できる人材が少なくなっていくのが現状であり、こういった方々の整備知識を  
+少しでも後世に残していく場が必要だと思っている  
+4)上記のような課題解決ができそうなサイトに、自動車SNS「みんカラ」があるが、こちらは  
+ユーザー同士の交流や日記の投稿などに主眼を置かれているサイト設計のため、  
+技術的な解決をする目的を持って記事検索をすると非常に探しにくく、有用な記事が見つからない事も多いので、自分も含めた「整備や製作を自分でやってしまう人」向けの「記事投稿型」の「知識共有サービス」  
+を作りたい    
 
-* System dependencies
+# 要件定義  
 
-* Configuration
+| 機能              | 目的       | 詳細           | ストーリー     | 所要時間(h) |
+| ---------------- | ---------- | ------------- | ------------ | ---------- |
+| ユーザー管理機能    | 各ユーザーにアカウント<br>を持ってもらう | deviseで実装 | ニックネームとパスワードと<br>アドレスが必要 | 2 |
+| 記事投稿機能        | 記事を投稿する | 記事を作成して投稿 | 記事作成画面から作成 | 10 |
+| コメント機能        | 記事にコメントをつける | コメント投稿機能を<br>実装する | コメントは<br>幾つでもつけられる | 15 |
+| タグ機能           | タグ付けする事で<br>目的の記事を<br>探しやすくする | 記事投稿時にタグを付け、<br>indexからタグで検索できる | タグは一つの記事に<br>5個まで | 15 |
+| プロフィール作成機能 | プロフィール編集で<br>人となりを<br>分かりやすくする | プロフィール用の<br>編集画面を作る | どういった人が<br>投稿しているか<br>分かりやすくする | 10 |
+| お気に入り機能      | 読み返したい記事を<br>読み返せるようにする | 任意の記事に対して<br>お気に入りボタンを<br>押すと登録できる | 記事を後から読み返せる | 20 |    
 
-* Database creation
+# 実装した機能についての説明  
+・ユーザー機能
+・プロフィール編集機能
+・記事投稿機能
+・自分が投稿した記事の編集/削除
+・記事へのコメント投稿機能
 
-* Database initialization
+# 実装予定の機能  
+・タグ機能の実装
+・ページネーションの導入
 
-* How to run the test suite
+# ローカルでの動作方法
 
-* Services (job queues, cache servers, search engines, etc.)
+git clone git@github.com:1chi1en/carcreates.git
 
-* Deployment instructions
+# DB設計  
 
-* ...
+## users テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| nickname        | string     | null: false                    |
+| email           | string     | null: false                    |
+| password        | string     | null: false                    |
+| profile         | text       | null: false                    |
+
+### Association
+
+- has_many :articles
+- has_many :comments
+
+## articles テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| title           | string     | null: false                    |
+| user            | references | null: false, foreign_key: true |
+
+
+### Association
+
+- has_many :comments
+- belongs_to :user
+
+## comments テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| post            | text       | null: false                    |
+| user            | references | null: false, foreign_key: true |
+| article         | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :article
+- belongs_to :user
