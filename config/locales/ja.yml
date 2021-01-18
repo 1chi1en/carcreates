@@ -1,0 +1,8 @@
+ja:
+  views:
+    pagination:
+      first: "&laquo; 最初のページへ飛ぶ"
+      last: "最後のページへ飛ぶ &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."

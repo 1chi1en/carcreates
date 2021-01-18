@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   before_action :find, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @article = Article.all
     @articles = Article.page(params[:page])
   end
 
