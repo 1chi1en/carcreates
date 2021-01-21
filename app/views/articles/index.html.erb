@@ -51,7 +51,7 @@
                             <div class="portfolio-item">
                                 <%= link_to article_path(article.id), class: "toplink" do %>
                                     <div class="portfolio-caption">
-                                    <%= image_tag article.image.variant(combine_options:{gravity: :center, resize:"200x200^",crop:"200x200+0+0"}).processed, class: "item-img" if article.image.attached? %>
+                                    <%# <%= image_tag article.image.variant(combine_options:{gravity: :center, resize:"200x200^",crop:"200x200+0+0"}).processed, class: "item-img" if article.image.attached? %>
                                         <div class="portfolio-caption-heading"><%= article.title %></div>
                                         <div class="portfolio-caption-subheading text-muted"><%= article.content.to_plain_text.truncate(20) %></div>
                                     </div>
