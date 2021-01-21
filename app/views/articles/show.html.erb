@@ -12,9 +12,11 @@
               <h4><%= link_to @article.user.nickname, user_path(@user.ids), class: "article-top" %>
                 <%= "さんの投稿"%></h4>
               <%= "#{@article.created_at.to_s(:datetime_jp)}"%>
-              <h2 class="articletitle"><%= @article.title%></h2>
+              <h3 class="articletitle"><%= @article.title%></h3>
               <%= image_tag @article.image.variant(combine_options:{gravity: :center, resize:"200x200^"}).processed, alt: "記事のサムネイル画像", class: "item-img" if @article.image.attached? %>
+              <div class="text-l">
               <p><%= @article.content%></p>
+              </div>
                 <button class="btn btn-primary" data-dismiss="modal" type="button">
                   <%= link_to 'トップに戻る', root_path, class: "letter-w"%>
                 </button>
@@ -30,7 +32,7 @@
                 <div class="comment">
                   <h4 class="commenttitle">記事にコメントする</h4>
                     <%= f.text_field :post, class:"form-control", placeholder: "コメントを入力", id:"comments-area" %>
-                    <%= f.submit "コメントを送信" ,class:"btn btn-primary" %>
+                    <div class="mar-top"><%= f.submit "コメントを送信" ,class:"btn btn-primary" %></div>
                 </div>
               <% end %>
                 <div class="comment-list">
