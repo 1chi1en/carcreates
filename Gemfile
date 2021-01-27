@@ -61,6 +61,7 @@ gem 'mini_magick'
 gem 'pry-rails'
 gem 'aws-sdk-s3', require: false 
 gem 'kaminari'
+gem 'acts-as-taggable-on'
 # gem 'rails-i18n'
 
 group :development, :test do
